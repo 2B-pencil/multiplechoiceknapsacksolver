@@ -64,4 +64,20 @@ MilpOutput milp(
         const Instance& instance,
         const MilpParameters& parameters = {});
 
+
+struct MilpLinearRelaxationOutput: Output
+{
+    MilpLinearRelaxationOutput(
+            const Instance& instance):
+        Output(instance) { }
+
+
+    /** Solution of the linear relaxation. */
+    std::vector<double> relaxation_solution;
+};
+
+MilpLinearRelaxationOutput milp_linear_relaxation(
+        const Instance& instance,
+        const MilpParameters& parameters = {});
+
 }

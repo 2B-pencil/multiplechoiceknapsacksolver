@@ -54,12 +54,15 @@ Output run(
         MilpParameters parameters;
         read_args(parameters, vm);
         return milp(instance, parameters);
+    } else if (algorithm == "milp-linear-relaxation") {
+        MilpParameters parameters;
+        read_args(parameters, vm);
+        return milp_linear_relaxation(instance, parameters);
 
     } else if (algorithm == "dynamic-programming-bellman-array") {
         Parameters parameters;
         read_args(parameters, vm);
         return dynamic_programming_bellman_array(instance, parameters);
-
     } else if (algorithm == "dynamic-programming-bellman-array-all") {
         Parameters parameters;
         read_args(parameters, vm);

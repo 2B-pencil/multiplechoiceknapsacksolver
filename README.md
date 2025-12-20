@@ -5,6 +5,7 @@ A solver for the multiple-choice knapsack problems:
 ## Implemented algorithms
 
 * Mixed-integer linear programming `--algorithm milp`
+  * Linear relaxation `--algorithm milp-linear-relaxation`
 
 * Dynamic programming
   * Bellman
