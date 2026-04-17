@@ -5,7 +5,7 @@ target_include_directories(MultipleChoiceKnapsackSolver_milp PUBLIC
     ${PROJECT_SOURCE_DIR}/include)
 target_link_libraries(MultipleChoiceKnapsackSolver_milp PUBLIC
     MultipleChoiceKnapsackSolver
-    MathOptSolversCMake::milp)
+    MathOptSolversCMake::mathopt)
 add_library(MultipleChoiceKnapsackSolver::milp ALIAS MultipleChoiceKnapsackSolver_milp)
 
 add_library(MultipleChoiceKnapsackSolver_dyer_zemel)

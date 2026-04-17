@@ -2,19 +2,29 @@
 
 #include "multiplechoiceknapsacksolver/algorithm_formatter.hpp"
 
+#ifdef CBC_FOUND
+#include "mathoptsolverscmake/mathopt_cbc.hpp"
+#endif
+#ifdef HIGHS_FOUND
+#include "mathoptsolverscmake/mathopt_highs.hpp"
+#endif
+#ifdef XPRESS_FOUND
+#include "mathoptsolverscmake/mathopt_xpress.hpp"
+#endif
+
 using namespace multiplechoiceknapsacksolver;
 
 namespace
 {
 
-mathoptsolverscmake::MilpModel create_milp_model(
+mathoptsolverscmake::MathOptModel create_milp_model(
         const Instance& instance)
 {
     int number_of_variables = instance.number_of_items();
     int number_of_constraints = 1 + instance.number_of_groups();
     int number_of_elements = 3 * instance.number_of_items();
 
-    mathoptsolverscmake::MilpModel model(
+    mathoptsolverscmake::MathOptModel model(
             number_of_variables,
             number_of_constraints,
             number_of_elements);
@@ -92,7 +102,7 @@ MilpOutput multiplechoiceknapsacksolver::milp(
 
     algorithm_formatter.print_header();
 
-    mathoptsolverscmake::MilpModel milp_model = create_milp_model(instance);
+    mathoptsolverscmake::MathOptModel milp_model = create_milp_model(instance);
     std::vector<double> milp_solution;
     double milp_bound = std::numeric_limits<double>::infinity();
 
@@ -171,7 +181,7 @@ MilpLinearRelaxationOutput multiplechoiceknapsacksolver::milp_linear_relaxation(
 
     algorithm_formatter.print_header();
 
-    mathoptsolverscmake::MilpModel milp_model = create_milp_model(instance);
+    mathoptsolverscmake::MathOptModel milp_model = create_milp_model(instance);
     for (int variable_id = 0;
             variable_id < milp_model.number_of_variables();
             ++variable_id) {

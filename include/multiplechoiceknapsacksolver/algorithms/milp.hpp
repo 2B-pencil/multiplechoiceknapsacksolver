@@ -2,7 +2,7 @@
 
 #include "multiplechoiceknapsacksolver/solution.hpp"
 
-#include "mathoptsolverscmake/milp.hpp"
+#include "mathoptsolverscmake/mathopt.hpp"
 
 namespace multiplechoiceknapsacksolver
 {
